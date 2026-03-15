@@ -1,0 +1,53 @@
+name = "watermark-remover-worker"
+main = "src/worker.js"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+[env.production]
+vars = { ENVIRONMENT = "production" }
+
+[vars]
+ENVIRONMENT = "development"
+ALLOWED_ORIGINS = "*"
+
+# 部署配置
+[deployment]
+env_vars = [
+  { key = "REPLICATE_API_TOKEN", value = "" },
+  { key = "ALLOWED_ORIGINS", value = "https://watermark-remover.pages.dev" },
+  { key = "DEBUG_MODE", value = "false" }
+]
+
+# 路由配置（生产环境）
+[[routes]]
+pattern = "watermark-remover.your-domain.workers.dev/*"
+zone_name = "your-domain.com"
+
+# 开发服务器配置
+[dev]
+port = 8787
+ip = "127.0.0.1"
+local_protocol = "http"
+
+# 构建配置
+[build]
+command = ""
+watch_dir = "src"
+
+# 日志配置
+[logpush]
+enabled = true
+dataset = "workers"
+
+# 监控配置
+[observability]
+enabled = true
+
+# 限制配置
+[limits]
+cpu_ms = 50
+memory_mb = 128
+
+# 触发器配置
+[triggers]
+crons = []

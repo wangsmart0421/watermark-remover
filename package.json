@@ -1,0 +1,40 @@
+{
+  "name": "watermark-remover",
+  "version": "1.0.0",
+  "description": "Online watermark removal tool using Cloudflare Workers and AI",
+  "main": "README.md",
+  "scripts": {
+    "dev": "concurrently \"cd worker && npm run dev\" \"echo 'Open frontend/index.html in browser'\"",
+    "deploy": "./deploy.sh --all --prod",
+    "deploy:frontend": "./deploy.sh --frontend --prod",
+    "deploy:worker": "./deploy.sh --worker --prod",
+    "test": "echo \"No tests yet\" && exit 0",
+    "format": "prettier --write '**/*.{js,html,json,md,css}'",
+    "prepare": "cd worker && npm install"
+  },
+  "keywords": [
+    "watermark",
+    "image-processing",
+    "ai",
+    "cloudflare",
+    "replicate",
+    "canvas"
+  ],
+  "author": "wangsmart0421",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "prettier": "^3.2.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wangsmart0421/watermark-remover.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wangsmart0421/watermark-remover/issues"
+  },
+  "homepage": "https://github.com/wangsmart0421/watermark-remover#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
